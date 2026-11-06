@@ -1,0 +1,436 @@
+@import "tailwindcss";
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* =========================================
+   ROADPULSE ROAD HAZARD
+   RED + WHITE WARNING TRIANGLE
+   ========================================= */
+
+.roadpulse-hazard-marker {
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Red outer triangle */
+
+.roadpulse-hazard-sign {
+  position: relative;
+
+  width: 46px;
+  height: 42px;
+
+  background: #ef1b1b;
+
+  clip-path: polygon(
+    50% 0%,
+    100% 100%,
+    0% 100%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 5;
+
+  filter:
+    drop-shadow(
+      0 0 7px rgba(239, 68, 68, 0.9)
+    );
+}
+
+
+/* White inner triangle */
+
+.roadpulse-hazard-sign::before {
+  content: "";
+
+  position: absolute;
+
+  width: 36px;
+  height: 32px;
+
+  background: white;
+
+  clip-path: polygon(
+    50% 0%,
+    100% 100%,
+    0% 100%
+  );
+
+  z-index: 1;
+}
+
+
+/* Black ! */
+
+.roadpulse-hazard-sign span {
+  position: absolute;
+
+  z-index: 3;
+
+  color: black;
+
+  font-size: 24px;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  margin-top: 7px;
+}
+
+
+/* Hazard waves */
+
+.roadpulse-hazard-marker::before,
+.roadpulse-hazard-marker::after {
+  content: "";
+
+  position: absolute;
+
+  width: 42px;
+  height: 42px;
+
+  border: 2px solid rgba(239, 68, 68, 0.8);
+
+  border-radius: 50%;
+
+  animation: hazardWave 1.8s infinite;
+}
+
+.roadpulse-hazard-marker::after {
+  animation-delay: 0.9s;
+}
+
+
+@keyframes hazardWave {
+
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================
+   DANGER ZONE
+   RED EMERGENCY SYMBOL
+   ========================================= */
+
+.roadpulse-danger-marker {
+  position: relative;
+
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Main danger badge */
+
+.roadpulse-danger-sign {
+  position: relative;
+
+  width: 52px;
+  height: 52px;
+
+  background: #dc2626;
+
+  border: 5px solid white;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 10px rgba(220, 38, 38, 0.9),
+    0 0 20px rgba(220, 38, 38, 0.6);
+
+  z-index: 5;
+}
+
+
+/* Emergency symbol */
+
+.roadpulse-danger-sign span {
+  color: white;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+
+/* Outer danger wave */
+
+.roadpulse-danger-marker::before {
+  content: "";
+
+  position: absolute;
+
+  width: 52px;
+  height: 52px;
+
+  border: 4px solid rgba(239, 68, 68, 0.9);
+
+  border-radius: 50%;
+
+  animation: dangerWave 1.7s infinite;
+
+  z-index: 1;
+}
+
+
+/* Second danger wave */
+
+.roadpulse-danger-marker::after {
+  content: "";
+
+  position: absolute;
+
+  width: 52px;
+  height: 52px;
+
+  border: 3px solid rgba(239, 68, 68, 0.6);
+
+  border-radius: 50%;
+
+  animation: dangerWave 1.7s infinite 0.85s;
+
+  z-index: 1;
+}
+
+
+@keyframes dangerWave {
+
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(3);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================
+   LARGE DANGER ZONE
+   ========================================= */
+
+.roadpulse-danger-zone {
+  animation: dangerZonePulse 2s infinite;
+}
+
+
+@keyframes dangerZonePulse {
+
+  0% {
+    fill-opacity: 0.08;
+    stroke-opacity: 0.6;
+  }
+
+  50% {
+    fill-opacity: 0.23;
+    stroke-opacity: 1;
+  }
+
+  100% {
+    fill-opacity: 0.08;
+    stroke-opacity: 0.6;
+  }
+
+}
+
+
+/* =========================================
+   CURRENT LOCATION
+   ========================================= */
+
+.roadpulse-current-marker {
+  position: relative;
+
+  width: 26px;
+  height: 26px;
+
+  background: #1677ff;
+
+  border: 4px solid white;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 10px rgba(22, 119, 255, 1);
+
+  z-index: 1000;
+}
+
+
+/* Blue location wave */
+
+.roadpulse-current-marker::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 26px;
+  height: 26px;
+
+  top: -4px;
+  left: -4px;
+
+  border: 3px solid rgba(22, 119, 255, 0.8);
+
+  border-radius: 50%;
+
+  animation: currentLocationWave 2s infinite;
+}
+
+
+/* Second blue wave */
+
+.roadpulse-current-marker::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 26px;
+  height: 26px;
+
+  top: -4px;
+  left: -4px;
+
+  border: 2px solid rgba(22, 119, 255, 0.5);
+
+  border-radius: 50%;
+
+  animation: currentLocationWave 2s infinite 1s;
+}
+
+
+@keyframes currentLocationWave {
+
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  70% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================
+   "YOU ARE HERE" LABEL
+   ========================================= */
+
+.roadpulse-you-are-here {
+
+  background: #1677ff;
+
+  color: white;
+
+  padding: 7px 12px;
+
+  border-radius: 8px;
+
+  font-weight: 700;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3);
+
+}
+
+
+/* =========================================
+   DESTINATION
+   ========================================= */
+
+.roadpulse-destination-marker {
+
+  width: 34px;
+  height: 34px;
+
+  background: #16a34a;
+
+  border: 4px solid white;
+
+  border-radius: 50% 50% 50% 0;
+
+  transform: rotate(-45deg);
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+.roadpulse-destination-marker span {
+
+  display: block;
+
+  transform: rotate(45deg);
+
+  color: white;
+
+  font-size: 16px;
+
+  text-align: center;
+
+}

@@ -1,0 +1,53 @@
+
+# =========================
+# ENVIRONMENT FILES
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# PYTHON ENVIRONMENTS
+# =========================
+venv/
+.venv/
+env/
+venv312/
+
+# =========================
+# PYTHON CACHE
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+
+# =========================
+# GENERATED OUTPUTS
+# =========================
+runs/
+results/
+uploads/
+
+# =========================
+# IDE FILES
+# =========================
+.idea/
+
+# =========================
+# LOGS
+# =========================
+*.log
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# Compressed backup files
+*.rar
+*.zip
+
+# Temporary files
+*.tmp
+*.bak
